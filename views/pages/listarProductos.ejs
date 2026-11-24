@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <%- include('../secciones/head'); %>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <main>
+        <div class="container">
+            <%- include('../secciones/menu'); %>
+            <h1>Productos EJS</h1>
+            <!-- Aqui va el contenido principal-->
+             
+             <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <a class="btn-primary" href="/insertarProductos"></a>
+                    <div class="card-header">
+                        <h2>Listado de Productos</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Marca</th>
+                                    <th>Precio</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% 
+                                    productos.forEach((producto) => {
+                                %>
+                                <tr class="align-middle">
+                                    <td><%= producto.idProducto %></td>
+                                    <td><%= producto.nombreProducto %></td>
+                                    <td><%= producto.marcaProducto %></td>
+                                    <td><%= producto.precioProducto %></td>
+                                    <td>
+                                        <a class="btn-warning" 
+                                        href="/buscarProducto/<%= producto.idProducto %>"></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-warning" 
+                                        href="/eliminarProducto/<%= eliminar.idProducto %>"></a>
+                                    </td>
+                                <tr>
+                                <%
+                                    });
+                                %>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+             </div>
+
+        </div>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+        <%- include('../secciones/footer'); %>
+    </footer>
+</body>
+</html>
